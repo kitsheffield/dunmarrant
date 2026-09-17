@@ -1,0 +1,716 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Dunmarra NT: a petroleum services precinct and workforce village on the Stuart Highway in the Beetaloo Sub-basin. Powered service-company lots, modular accommodation, services open to the region.">
+<title>Dunmarra NT</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --ground:#F7F3EC; --panel:#FFFFFF; --panel-2:#EFE8DC; --line:#D9D0C2; --line-strong:#B9AE9C;
+  --ink:#1F1B17; --ink-2:#5A5249; --ink-3:#8A8175;
+  --ochre:#B4471C; --ochre-ink:#8F3612; --ochre-soft:#F3DDD1;
+  --spinifex:#6E7A3B; --spinifex-soft:#E4E7D3;
+  --steel:#3E434A; --sky:#2F6C95; --sky-soft:#D9E6EF;
+  --ok:#3F7A3A; --warn:#B7860B; --off:#8A8175;
+  --shadow:0 1px 2px rgba(31,27,23,.06),0 10px 30px -18px rgba(31,27,23,.25);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#17140F; --panel:#211D17; --panel-2:#2A251E; --line:#3A342B; --line-strong:#57503F;
+    --ink:#F1EBE1; --ink-2:#C2B8A8; --ink-3:#8E8574;
+    --ochre:#E0673A; --ochre-ink:#F2A07E; --ochre-soft:#3B2317;
+    --spinifex:#A9B56C; --spinifex-soft:#2A2E1A;
+    --steel:#C9CDD2; --sky:#7FB3D8; --sky-soft:#1B2E3C;
+    --ok:#7FC276; --warn:#E3B54A; --off:#8E8574;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#17140F; --panel:#211D17; --panel-2:#2A251E; --line:#3A342B; --line-strong:#57503F;
+  --ink:#F1EBE1; --ink-2:#C2B8A8; --ink-3:#8E8574;
+  --ochre:#E0673A; --ochre-ink:#F2A07E; --ochre-soft:#3B2317;
+  --spinifex:#A9B56C; --spinifex-soft:#2A2E1A;
+  --steel:#C9CDD2; --sky:#7FB3D8; --sky-soft:#1B2E3C;
+  --ok:#7FC276; --warn:#E3B54A; --off:#8E8574;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px -18px rgba(0,0,0,.7);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto} *{transition:none!important;animation:none!important}}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:"Barlow Condensed","Arial Narrow",Impact,sans-serif;font-weight:700;line-height:1.02;margin:0;text-wrap:balance;letter-spacing:.005em}
+h1{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:800;text-transform:uppercase}
+h2{font-size:clamp(1.9rem,4vw,3rem);text-transform:uppercase}
+h3{font-size:1.45rem}
+h4{font-size:1.1rem;font-family:"IBM Plex Sans",sans-serif;font-weight:600}
+p{margin:0}
+a{color:var(--ochre);text-decoration:none}
+a:hover{text-decoration:underline}
+.mono{font-family:"IBM Plex Mono",ui-monospace,Menlo,monospace;font-variant-numeric:tabular-nums}
+.eyebrow{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ochre);font-weight:500}
+.lede{font-size:1.15rem;color:var(--ink-2);max-width:62ch}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:clamp(16px,4vw,40px)}
+section{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--line)}
+section.tight{padding-block:40px}
+.sec-head{display:grid;gap:14px;margin-bottom:40px;max-width:70ch}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:4px;font-weight:600;font-size:.95rem;border:1px solid transparent;cursor:pointer;font-family:inherit;transition:background .15s,color .15s,border-color .15s}
+.btn:hover{text-decoration:none}
+.btn-primary{background:var(--ochre);color:#fff}
+.btn-primary:hover{background:var(--ochre-ink)}
+.btn-ghost{background:transparent;color:var(--ink);border-color:var(--line-strong)}
+.btn-ghost:hover{border-color:var(--ink)}
+.btn:focus-visible,button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
+
+/* nav */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--ground) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:62px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);font-family:"Barlow Condensed",sans-serif;font-weight:800;font-size:1.4rem;text-transform:uppercase;letter-spacing:.02em}
+.brand:hover{text-decoration:none}
+.brand svg{width:30px;height:30px}
+.nav ul{display:flex;gap:22px;list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end}
+.nav li a{color:var(--ink-2);font-size:.92rem;font-weight:500}
+.nav li a:hover{color:var(--ink);text-decoration:none}
+@media (max-width:760px){.nav ul{display:none}}
+
+/* hero */
+.hero{border-top:0;padding-block:clamp(48px,7vw,96px) clamp(40px,5vw,72px);position:relative;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+.hero h1 span{color:var(--ochre)}
+.hero .lede{margin-top:20px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);border-radius:6px;overflow:hidden;margin-top:clamp(32px,5vw,56px);background:var(--panel)}
+.facts div{padding:16px 18px;border-right:1px solid var(--line)}
+.facts div:last-child{border-right:0}
+.facts b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:2rem;font-weight:700;line-height:1;color:var(--ink)}
+.facts small{color:var(--ink-3);font-size:.8rem}
+@media (max-width:760px){.facts{grid-template-columns:repeat(2,1fr)} .facts div:nth-child(2){border-right:0} .facts div:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.sitemap{width:100%;height:auto;display:block;border-radius:6px;border:1px solid var(--line);background:var(--panel)}
+.fig-cap{font-size:.78rem;color:var(--ink-3);margin-top:8px}
+
+/* paths */
+.paths{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+@media (max-width:900px){.paths{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:520px){.paths{grid-template-columns:1fr}}
+.path{background:var(--panel);padding:24px 22px 26px;display:grid;gap:10px;align-content:start;color:var(--ink);position:relative}
+.path:hover{background:var(--panel-2);text-decoration:none}
+.path .eyebrow{color:var(--ink-3)}
+.path h3{font-size:1.5rem}
+.path p{color:var(--ink-2);font-size:.95rem}
+.path .go{margin-top:auto;color:var(--ochre);font-weight:600;font-size:.9rem}
+
+/* precinct */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr}}
+.spec{border-top:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:12px;padding:10px 0;font-size:.95rem}
+.spec span:last-child{font-family:"IBM Plex Mono",monospace;font-size:.85rem;color:var(--ink-2);text-align:right;white-space:nowrap}
+.spec-list{border-bottom:1px solid var(--line)}
+.plan{width:100%;height:auto;display:block}
+.notice{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;border:1px dashed var(--line-strong);border-radius:6px;background:var(--panel);font-size:.9rem;color:var(--ink-2)}
+.notice svg{flex:none;width:18px;height:18px;margin-top:2px}
+.program{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:28px}
+@media (max-width:760px){.program{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.program{grid-template-columns:1fr}}
+.program div{padding:14px 16px;border:1px solid var(--line);border-radius:6px;background:var(--panel);font-size:.92rem}
+.program b{display:block;font-family:"Barlow Condensed",sans-serif;font-size:1.25rem;font-weight:700}
+
+/* lots */
+.lots-layout{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:28px;align-items:start}
+@media (max-width:900px){.lots-layout{grid-template-columns:1fr}}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.chip{border:1px solid var(--line-strong);background:var(--panel);color:var(--ink-2);padding:7px 12px;border-radius:999px;font-size:.85rem;font-weight:500;cursor:pointer;font-family:inherit}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--ground);border-color:var(--ink)}
+.filters .count{margin-left:auto;font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--ink-3)}
+.lot-table{width:100%;border-collapse:collapse;font-size:.92rem;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lot-table th{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;text-align:left;color:var(--ink-3);padding:10px 12px;border-bottom:1px solid var(--line);font-weight:500}
+.lot-table td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+.lot-table tr:last-child td{border-bottom:0}
+.lot-table tbody tr{cursor:pointer}
+.lot-table tbody tr:hover{background:var(--panel-2)}
+.lot-table tbody tr[aria-selected="true"]{background:var(--ochre-soft)}
+.lot-table td.num{font-family:"IBM Plex Mono",monospace;font-size:.85rem;font-variant-numeric:tabular-nums}
+.status{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:600;white-space:nowrap}
+.status::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.status.available{color:var(--ok)}
+.status.offer{color:var(--warn)}
+.status.leased{color:var(--off)}
+.status.future{color:var(--sky)}
+.tier-badge{display:inline-block;font-family:"Barlow Condensed",sans-serif;font-weight:700;font-size:1rem;width:26px;height:26px;line-height:26px;text-align:center;border-radius:4px;background:var(--panel-2);color:var(--ink)}
+.tbl-wrap{overflow-x:auto}
+.detail{position:sticky;top:calc(env(safe-area-inset-top,0px) + 76px);background:var(--panel);border:1px solid var(--line);border-radius:6px;box-shadow:var(--shadow)}
+.detail-head{padding:20px 22px 16px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.detail-head h3{font-size:1.9rem}
+.detail-body{padding:18px 22px 22px;display:grid;gap:18px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:6px 16px;font-size:.92rem}
+.kv dt{color:var(--ink-3);margin:0}
+.kv dd{margin:0;text-align:right;font-family:"IBM Plex Mono",monospace;font-size:.85rem}
+.detail h4{margin-bottom:8px}
+.incl{list-style:none;margin:0;padding:0;display:grid;gap:6px;font-size:.92rem}
+.incl li{padding-left:20px;position:relative}
+.incl li::before{content:"";position:absolute;left:0;top:.55em;width:10px;height:2px;background:var(--ochre)}
+.power{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--panel-2)}
+.power-row{display:flex;justify-content:space-between;gap:12px;font-size:.9rem;padding:6px 0;border-bottom:1px solid var(--line)}
+.power-row:last-child{border-bottom:0}
+.power-row span:last-child{font-family:"IBM Plex Mono",monospace;font-size:.85rem}
+.seg{display:inline-flex;border:1px solid var(--line-strong);border-radius:4px;overflow:hidden}
+.seg button{border:0;background:var(--panel);color:var(--ink-2);padding:6px 12px;font-size:.82rem;font-weight:600;cursor:pointer;font-family:inherit}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--ground)}
+.bar{display:flex;height:10px;border-radius:3px;overflow:hidden;margin-top:10px;background:var(--line)}
+.bar i{display:block;height:100%}
+.bar-legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.78rem;color:var(--ink-2);margin-top:8px}
+.bar-legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.c-solar{background:#D9A43A}.c-batt{background:var(--spinifex)}.c-gen{background:var(--steel)}
+.tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:32px}
+@media (max-width:760px){.tiers{grid-template-columns:1fr}}
+.tier{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:20px 20px 22px;display:grid;gap:12px}
+.tier .tier-badge{width:38px;height:38px;line-height:38px;font-size:1.4rem}
+.tier h3{font-size:1.5rem}
+.tier .kv{grid-template-columns:auto 1fr}
+.tier .kv dd{text-align:left}
+
+/* accommodation */
+.acc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+@media (max-width:900px){.acc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:480px){.acc-grid{grid-template-columns:1fr}}
+.acc{border:1px solid var(--line);border-radius:6px;background:var(--panel);padding:18px;display:grid;gap:6px}
+.acc b{font-family:"Barlow Condensed",sans-serif;font-size:1.3rem;font-weight:700}
+.acc small{color:var(--ink-3);font-family:"IBM Plex Mono",monospace;font-size:.75rem}
+.acc p{font-size:.9rem;color:var(--ink-2)}
+
+/* community */
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+@media (max-width:760px){.principles{grid-template-columns:1fr}}
+.principle{background:var(--panel);padding:24px 22px;display:grid;gap:10px;align-content:start}
+.principle h3{font-size:1.4rem}
+.principle p{font-size:.95rem;color:var(--ink-2)}
+
+/* phasing */
+.phases{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--panel)}
+@media (max-width:760px){.phases{grid-template-columns:1fr 1fr}}
+.phase{padding:20px 18px;border-right:1px solid var(--line);display:grid;gap:8px;align-content:start}
+.phase:last-child{border-right:0}
+@media (max-width:760px){.phase:nth-child(2){border-right:0}.phase:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+.phase b{font-family:"Barlow Condensed",sans-serif;font-size:2.4rem;font-weight:800;line-height:1}
+.phase small{font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.phase p{font-size:.9rem;color:var(--ink-2)}
+
+/* contact */
+form{display:grid;gap:14px;max-width:560px}
+label{display:grid;gap:6px;font-size:.88rem;font-weight:500;color:var(--ink-2)}
+input,select,textarea{font:inherit;padding:10px 12px;border:1px solid var(--line-strong);border-radius:4px;background:var(--panel);color:var(--ink);width:100%}
+textarea{min-height:110px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.row{grid-template-columns:1fr}}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:.85rem;color:var(--ink-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.hidden{display:none!important}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} img{max-width:100%} [hidden]{display:none!important}</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Site">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Dunmarra NT home">
+      <svg viewBox="0 0 30 30" aria-hidden="true"><rect x="1" y="1" width="28" height="28" rx="3" fill="var(--ochre)"/><path d="M6 22 L15 8 L24 22 Z" fill="none" stroke="#fff" stroke-width="2.4" stroke-linejoin="round"/><path d="M6 22 H24" stroke="#fff" stroke-width="2.4"/></svg>
+      Dunmarra <span style="color:var(--ochre)">NT</span>
+    </a>
+    <ul>
+      <li><a href="#precinct">Precinct</a></li>
+      <li><a href="#lots">Service lots</a></li>
+      <li><a href="#accommodation">Accommodation</a></li>
+      <li><a href="#community">Community</a></li>
+      <li><a href="#project">Project</a></li>
+      <li><a href="#contact" class="btn btn-primary" style="padding:8px 14px">Enquire</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">Stuart Highway · Beetaloo Sub-basin · Northern Territory</p>
+        <h1 style="margin-top:14px">A serviced base for the <span>Beetaloo</span> workforce</h1>
+        <p class="lede">Dunmarra is a planned petroleum services precinct and workforce village on the Stuart Highway, between Elliott and Daly Waters. Fenced, powered service-company lots. Modular accommodation with mess, laundry and recreation. Services open to the local community.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#lots">Browse service lots</a>
+          <a class="btn btn-ghost" href="#accommodation">Workforce accommodation</a>
+        </div>
+      </div>
+      <div>
+        <svg class="sitemap" viewBox="0 0 560 420" role="img" aria-labelledby="mapTitle">
+          <title id="mapTitle">Schematic of the Dunmarra precinct: Stuart Highway on the west, township and village clusters to the north, airstrip, and the services precinct with its own highway junction to the south.</title>
+          <rect width="560" height="420" fill="var(--panel)"/>
+          <!-- site wedge -->
+          <path d="M70 30 L540 60 L520 400 L70 390 Z" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/>
+          <!-- highway -->
+          <path d="M40 0 L52 420" stroke="var(--steel)" stroke-width="6" fill="none"/>
+          <path d="M40 0 L52 420" stroke="var(--ground)" stroke-width="1" stroke-dasharray="8 8" fill="none"/>
+          <text x="20" y="215" font-size="10" fill="var(--ink-2)" transform="rotate(-88 20 215)" font-family="IBM Plex Mono,monospace" letter-spacing="1.5">STUART HIGHWAY</text>
+          <!-- gas pipeline -->
+          <path d="M88 8 L94 412" stroke="var(--sky)" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
+          <text x="98" y="405" font-size="8.5" fill="var(--sky)" font-family="IBM Plex Mono,monospace">GAS PIPELINE</text>
+          <!-- township entry -->
+          <path d="M50 120 L150 122" stroke="var(--steel)" stroke-width="3.5"/>
+          <!-- main avenue -->
+          <path d="M150 122 L360 128" stroke="var(--steel)" stroke-width="3"/>
+          <!-- village loop -->
+          <path d="M150 60 H360 V210 H150 Z" stroke="var(--steel)" stroke-width="2" fill="none"/>
+          <!-- village clusters -->
+          <g fill="var(--ochre)" opacity=".85">
+            <rect x="160" y="70" width="60" height="42" rx="2"/><rect x="230" y="70" width="60" height="42" rx="2"/><rect x="300" y="70" width="52" height="42" rx="2"/>
+            <rect x="160" y="140" width="60" height="42" rx="2"/><rect x="230" y="140" width="60" height="42" rx="2"/><rect x="300" y="140" width="52" height="42" rx="2"/>
+          </g>
+          <text x="255" y="232" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">VILLAGE CLUSTERS</text>
+          <!-- town square / arrival plaza -->
+          <rect x="380" y="90" width="120" height="70" rx="2" fill="var(--spinifex-soft)" stroke="var(--spinifex)" stroke-width="1.2"/>
+          <text x="440" y="120" font-size="9" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace">TOWN CENTRE</text>
+          <text x="440" y="133" font-size="8" fill="var(--ink-3)" text-anchor="middle" font-family="IBM Plex Mono,monospace">shops · hall · oval · pool</text>
+          <!-- airstrip -->
+          <rect x="150" y="256" width="360" height="14" rx="2" fill="var(--steel)"/>
+          <text x="330" y="250" font-size="9" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">AIRSTRIP</text>
+          <!-- services precinct -->
+          <path d="M52 330 L150 332" stroke="var(--steel)" stroke-width="3.5"/>
+          <path d="M150 332 H500" stroke="var(--steel)" stroke-width="2.5"/>
+          <g fill="none" stroke="var(--ink-3)" stroke-width="1">
+            <rect x="160" y="300" width="30" height="24"/><rect x="196" y="300" width="30" height="24"/><rect x="232" y="300" width="30" height="24"/>
+            <rect x="272" y="296" width="44" height="28"/><rect x="322" y="296" width="44" height="28"/>
+            <rect x="378" y="290" width="60" height="34"/><rect x="444" y="290" width="56" height="34"/>
+            <rect x="160" y="342" width="30" height="24"/><rect x="196" y="342" width="30" height="24"/>
+            <rect x="272" y="342" width="44" height="28"/><rect x="322" y="342" width="44" height="28"/>
+            <rect x="378" y="342" width="60" height="34"/>
+          </g>
+          <text x="330" y="392" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">SERVICES PRECINCT · FREIGHT JUNCTION</text>
+          <!-- north arrow -->
+          <path d="M520 30 L526 12 L532 30 Z" fill="var(--ink-2)"/><text x="526" y="42" font-size="8" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace">N</text>
+        </svg>
+        <p class="fig-cap">Schematic structure plan. Not to scale. Guest and freight traffic use separate highway junctions.</p>
+      </div>
+    </div>
+    <div class="facts" aria-label="Key facts">
+      <div><b>~600 ha</b><small>site area, subject to survey</small></div>
+      <div><b>3,000</b><small>cabin capacity at full build-out</small></div>
+      <div><b>2</b><small>highway junctions: guests and freight kept separate</small></div>
+      <div><b>Gas + air</b><small>pipeline frontage and on-site airstrip</small></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight" id="paths">
+  <div class="wrap">
+    <div class="paths">
+      <a class="path" href="#lots">
+        <span class="eyebrow">Service companies</span>
+        <h3>Lease a powered, fenced lot</h3>
+        <p>Standard S / M / L packages with workshop, water and gas connections and a self-contained power system.</p>
+        <span class="go">See available lots →</span>
+      </a>
+      <a class="path" href="#accommodation">
+        <span class="eyebrow">Operators</span>
+        <h3>Book workforce accommodation</h3>
+        <p>Blocks of modular units with mess, laundry and lounges, minutes from the Beetaloo access roads.</p>
+        <span class="go">Accommodation packages →</span>
+      </a>
+      <a class="path" href="#community">
+        <span class="eyebrow">Community</span>
+        <h3>A village that isn't closed</h3>
+        <p>Grocery, medical, pool, gym and jobs open to Elliott, Daly Waters and surrounding communities.</p>
+        <span class="go">How access works →</span>
+      </a>
+      <a class="path" href="#project">
+        <span class="eyebrow">Government &amp; partners</span>
+        <h3>Project status and phasing</h3>
+        <p>Staged from 100 to 3,000 cabins. Designed to keep Beetaloo spend and employment in the Territory.</p>
+        <span class="go">Project overview →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="precinct">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">The precinct</p>
+      <h2>Built in clusters. Serviced like a town.</h2>
+      <p class="lede">The village is organised in clusters of 120 modular units, each with its own mess and kitchen, laundry, lounges and courts. Clusters share a town centre with a community hall, supermarket and shops, sports oval, pool and water tower. The services precinct sits south, on its own freight road.</p>
+    </div>
+    <div class="two">
+      <div>
+        <h3>Cluster program</h3>
+        <div class="program" style="margin-top:14px">
+          <div><b>120</b>accommodation units per cluster</div>
+          <div><b>Mess</b>149 m² dining, commercial kitchen, cool room and freezer</div>
+          <div><b>Laundry</b>twin 12 m modules with shaded drying deck</div>
+          <div><b>Lounges</b>73 m² recreation with pool table, table tennis, TVs</div>
+          <div><b>Courts</b>basketball court and shaded outdoor dining per cluster</div>
+          <div><b>Parking</b>light-vehicle bays at every unit row</div>
+        </div>
+        <h3 style="margin-top:32px">Town centre</h3>
+        <div class="program" style="margin-top:14px">
+          <div><b>Hall</b>community hall and events</div>
+          <div><b>Shops</b>supermarket and retail tenancies</div>
+          <div><b>Oval</b>full-size sports oval and park</div>
+          <div><b>Pool</b>wet play and lap pool</div>
+          <div><b>Water</b>town water tower and treatment</div>
+          <div><b>Expansion</b>reserved commercial land</div>
+        </div>
+      </div>
+      <div>
+        <h3>Type A long-term unit</h3>
+        <p style="color:var(--ink-2);margin:8px 0 16px;font-size:.95rem">Steel-framed modular unit, 12 m × 3.2 m, transported complete and set on pad footings. Every unit is designed for cyclone-rated wind loads and NT heat.</p>
+        <svg class="plan" viewBox="0 0 600 220" role="img" aria-label="Floor plan of the Type A unit: bedroom, robe, living space with kitchenette, ensuite, and a 3-metre deck along the long side.">
+          <rect x="1" y="1" width="598" height="218" fill="var(--panel)" stroke="var(--line)"/>
+          <rect x="30" y="30" width="540" height="110" fill="var(--panel-2)" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="215" y1="30" x2="215" y2="140" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="440" y1="30" x2="440" y2="140" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="500" y1="30" x2="500" y2="80" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="45" y="45" width="90" height="60" rx="2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="182" y="40" width="22" height="70" fill="none" stroke="var(--ink-3)"/>
+          <rect x="230" y="38" width="200" height="14" fill="none" stroke="var(--ink-3)"/>
+          <rect x="452" y="40" width="42" height="34" fill="none" stroke="var(--ink-3)"/>
+          <circle cx="470" cy="110" r="8" fill="none" stroke="var(--ink-3)"/>
+          <rect x="30" y="142" width="540" height="46" fill="none" stroke="var(--ink-3)" stroke-dasharray="3 3"/>
+          <g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--ink-2)">
+            <text x="122" y="128" text-anchor="middle">BEDROOM 12 m²</text>
+            <text x="193" y="125" text-anchor="middle" font-size="8">ROBE</text>
+            <text x="328" y="105" text-anchor="middle">LIVING + KITCHENETTE 14 m²</text>
+            <text x="505" y="128" text-anchor="middle">ENSUITE 6 m²</text>
+            <text x="545" y="62" text-anchor="middle" font-size="8">PLANT</text>
+            <text x="300" y="170" text-anchor="middle">DECK 3.0 m × 12.0 m</text>
+            <text x="300" y="206" text-anchor="middle" fill="var(--ink-3)">12 000</text>
+            <text x="16" y="88" text-anchor="middle" fill="var(--ink-3)" transform="rotate(-90 16 88)">3 200</text>
+          </g>
+        </svg>
+        <div class="spec-list" style="margin-top:14px">
+          <div class="spec"><span>Envelope</span><span>Colorbond Ultra on Enduroframe steel, fully insulated</span></div>
+          <div class="spec"><span>Bedroom</span><span>King bed, built-in robe, split AC, 65" TV</span></div>
+          <div class="spec"><span>Living</span><span>Kitchenette, 2-zone cooktop, microwave, bar fridge</span></div>
+          <div class="spec"><span>Hot water</span><span>Gas instantaneous</span></div>
+          <div class="spec"><span>Power</span><span>Roof solar, battery store, gas fuel cell</span></div>
+          <div class="spec"><span>Deck</span><span>Independent modular deck, optional living module</span></div>
+        </div>
+        <div class="notice" style="margin-top:18px">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v5M10 14h.01"/></svg>
+          <span>Unit and precinct designs are schematic, prepared by Rossi Architects for Steeline GRP, and will be refined in design development. Architectural renders will be published with the designers' consent.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="lots">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Services precinct</p>
+      <h2>Service-company lots</h2>
+      <p class="lede">Standard packages so a contractor can be operating within weeks, not seasons. Every lot is fenced, has a workshop, water and gas connections, and its own power system sized to the tier. Select a lot for the full package.</p>
+    </div>
+
+    <div class="lots-layout">
+      <div>
+        <div class="filters" role="group" aria-label="Filter lots">
+          <button class="chip" data-tier="all" aria-pressed="true">All tiers</button>
+          <button class="chip" data-tier="S" aria-pressed="false">S</button>
+          <button class="chip" data-tier="M" aria-pressed="false">M</button>
+          <button class="chip" data-tier="L" aria-pressed="false">L</button>
+          <button class="chip" data-avail="1" aria-pressed="false">Available only</button>
+          <span class="count" id="lotCount"></span>
+        </div>
+        <div class="tbl-wrap">
+          <table class="lot-table" id="lotTable">
+            <thead><tr><th>Lot</th><th>Tier</th><th>Lot area</th><th>Workshop</th><th>Frontage</th><th>Status</th></tr></thead>
+            <tbody id="lotBody"></tbody>
+          </table>
+        </div>
+        <p class="fig-cap" style="margin-top:10px">Stage 1 release. Lot numbers, sizes and availability are indicative and will be confirmed at lease.</p>
+      </div>
+
+      <aside class="detail" id="detail" aria-live="polite">
+        <div class="detail-head">
+          <div>
+            <p class="eyebrow" id="dTierLabel">Tier</p>
+            <h3 id="dTitle">Select a lot</h3>
+          </div>
+          <span class="status" id="dStatus"></span>
+        </div>
+        <div class="detail-body">
+          <dl class="kv" id="dKv"></dl>
+          <div>
+            <h4>Included in the package</h4>
+            <ul class="incl" id="dIncl"></ul>
+          </div>
+          <div class="power">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px">
+              <h4 style="margin:0">Power system</h4>
+              <div class="seg" role="group" aria-label="Firming source">
+                <button data-gen="cng" aria-pressed="true">CNG genset</button>
+                <button data-gen="sofc" aria-pressed="false">SOFC option</button>
+              </div>
+            </div>
+            <div id="dPower"></div>
+            <div class="bar" id="dBar" aria-hidden="true"></div>
+            <div class="bar-legend"><span><i class="c-solar"></i>Solar, daytime</span><span><i class="c-batt"></i>Battery, evening</span><span><i class="c-gen"></i>Gas firming, overnight and wet season</span></div>
+          </div>
+          <a class="btn btn-primary" id="dEnquire" href="#contact">Enquire about this lot</a>
+        </div>
+      </aside>
+    </div>
+
+    <div class="tiers" id="tierCards"></div>
+  </div>
+</section>
+
+<section id="accommodation">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">For operators and contractors</p>
+      <h2>Workforce accommodation</h2>
+      <p class="lede">Take a row, a cluster, or a cluster with your own mess. Units are single-occupancy with ensuite and kitchenette, so crews on long rotations get a room, not a donga. Dunmarra is a landlord: catering, cleaning and site services are run by specialist operators you contract directly or through us.</p>
+    </div>
+    <div class="acc-grid">
+      <div class="acc"><b>Row</b><small>10–20 units</small><p>Short-term crews, shutdown and construction peaks. Shared cluster mess and laundry.</p></div>
+      <div class="acc"><b>Half cluster</b><small>60 units</small><p>Standing rotation for a drilling or completions campaign. Dedicated lounge.</p></div>
+      <div class="acc"><b>Full cluster</b><small>120 units</small><p>Own mess and kitchen, laundry, lounges and court. Branded, gated if required.</p></div>
+      <div class="acc"><b>Construction camp</b><small>flexible</small><p>Early works lodging for pipeline, power and civil contractors while their own facilities are built.</p></div>
+    </div>
+    <div class="two" style="margin-top:40px">
+      <div>
+        <h3>What operators get</h3>
+        <ul class="incl" style="margin-top:12px">
+          <li>Highway access from Darwin and Alice Springs; airstrip on site for charter rotation</li>
+          <li>Units with individual climate control, gas hot water and standby power</li>
+          <li>Mess with commercial kitchen, cool room and freezer per cluster</li>
+          <li>Recreation: lounges, courts, oval, pool and licensed venues in the town centre</li>
+          <li>Medical, grocery and gym on site, run by commercial operators</li>
+          <li>Long-term lease or campaign-based agreements</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Why not a closed camp</h3>
+        <p style="color:var(--ink-2);margin-top:12px;font-size:.95rem">Closed workforce camps are cheap to run and expensive for the region: money leaves on the same plane as the crew. Dunmarra is built so the services a workforce needs also serve the people who already live here, and so a share of the roles are filled locally. For operators that means a social licence case that stands up in front of Traditional Owners, the NT Government and the public.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="community">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Community</p>
+      <h2>Open to the region</h2>
+      <p class="lede">Dunmarra is not a permanent town and not a closed camp. It is a serviced village where the grocery, clinic, pool, gym and venues are run commercially and open to anyone, including the people of Elliott, Daly Waters and surrounding communities.</p>
+    </div>
+    <div class="principles">
+      <div class="principle"><h3>Services you can use</h3><p>Grocery, medical, fitness, pool and licensed venues operate as businesses, priced for the public. Nothing is free, and nothing is behind a boom gate.</p></div>
+      <div class="principle"><h3>Jobs that stay</h3><p>Hospitality, maintenance, retail, transport and site services are local roles first. Training pathways are being developed with regional providers and Traditional Owner organisations.</p></div>
+      <div class="principle"><h3>Territory first</h3><p>The precinct is designed so a Beetaloo workforce can rotate from Darwin and Alice Springs rather than interstate or overseas, keeping wages and spend in the Territory.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="eyebrow">Project</p>
+      <h2>Staged to demand</h2>
+      <p class="lede">Dunmarra Development Land Pty Ltd is delivering the precinct in stages that match Beetaloo activity, with each stage a complete, operable village.</p>
+    </div>
+    <div class="phases">
+      <div class="phase"><small>Stage 1</small><b>100</b><p>First cluster, mess and laundry, services precinct stage 1 lots, town water and power.</p></div>
+      <div class="phase"><small>Stage 2</small><b>500</b><p>Four clusters, town centre core: supermarket, hall, clinic, first venues.</p></div>
+      <div class="phase"><small>Stage 3</small><b>1,500</b><p>Oval, pool, school and clinic land, airstrip terminal, expanded freight precinct.</p></div>
+      <div class="phase"><small>Stage 4</small><b>3,000</b><p>Full build-out across eight villages with reserved commercial expansion land.</p></div>
+    </div>
+    <div class="two" style="margin-top:40px">
+      <div>
+        <h3>Site</h3>
+        <ul class="incl" style="margin-top:12px">
+          <li>Stuart Highway frontage with separate township and freight junctions</li>
+          <li>Natural gas pipeline frontage for on-site generation</li>
+          <li>Existing airstrip; passenger terminal planned at the northern threshold</li>
+          <li>Native title and benefit-sharing process under way with the Northern Land Council</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Partners</h3>
+        <ul class="incl" style="margin-top:12px">
+          <li>Master plan: Bennett Architecture</li>
+          <li>Modular accommodation and precinct design: Rossi Architects for Steeline GRP, Darwin</li>
+          <li>Construction and civil: Darwin-based contractors</li>
+          <li>Legal and advisory: Darwin firms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="two">
+      <div class="sec-head" style="margin-bottom:0">
+        <p class="eyebrow">Enquire</p>
+        <h2>Talk to us</h2>
+        <p class="lede">Lot leasing, accommodation blocks, supply and services tenancies, or community partnership. Tell us who you are and what you need; we reply within two business days.</p>
+        <p style="margin-top:16px;font-size:.95rem;color:var(--ink-2)"><b>Dunmarra Development</b><br>Kit Sheffield, Cofounder<br><a href="mailto:ksheffield@marbellainterests.com">ksheffield@marbellainterests.com</a></p>
+      </div>
+      <form id="enquiry">
+        <div class="row">
+          <label>Name<input id="fName" name="name" required autocomplete="name"></label>
+          <label>Company<input id="fCompany" name="company" autocomplete="organization"></label>
+        </div>
+        <div class="row">
+          <label>Email<input id="fEmail" name="email" type="email" required autocomplete="email"></label>
+          <label>Phone<input id="fPhone" name="phone" type="tel" autocomplete="tel"></label>
+        </div>
+        <label>I'm interested in
+          <select id="fTopic" name="topic">
+            <option value="Service lot">Leasing a service-company lot</option>
+            <option value="Accommodation">Workforce accommodation</option>
+            <option value="Tenancy">A retail, services or venue tenancy</option>
+            <option value="Community">Community partnership or employment</option>
+            <option value="Investment">Investment or government partnership</option>
+          </select>
+        </label>
+        <label>Details<textarea id="fMsg" name="message" placeholder="Crew size, dates, lot tier, or anything else useful"></textarea></label>
+        <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+          <button class="btn btn-primary" type="submit">Send enquiry</button>
+          <span style="font-size:.85rem;color:var(--ink-3)">Opens a pre-filled email in your mail app.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Dunmarra Development Land Pty Ltd · Dunmarra, Northern Territory, Australia</span>
+    <span>dunmarrant.com.au · Plans and figures are indicative and subject to survey, approvals and design development.</span>
+  </div>
+</footer>
+
+<script>
+// ---- Lot package data (edit here; republish to update the site) ----
+const TIERS = {
+  S: { name:"Small", lot:2000, shop:"15 × 30 m (450 m²)", frontage:40, crew:"5–15 people", suits:"Electrical, instrumentation, survey, maintenance, tool and parts supply",
+       loadKwh:150, peakKw:35, solarKw:40, battKwh:100, sofcKw:15, cngKva:30, water:"25 mm metered potable + non-potable", gas:"Metered natural gas, 5 kPa" },
+  M: { name:"Medium", lot:5000, shop:"20 × 40 m (800 m²)", frontage:60, crew:"15–40 people", suits:"Civil, logistics, wireline, coil tubing, cementing, light fabrication",
+       loadKwh:350, peakKw:80, solarKw:90, battKwh:200, sofcKw:30, cngKva:60, water:"40 mm metered potable + non-potable", gas:"Metered natural gas, 5 kPa" },
+  L: { name:"Large", lot:10000, shop:"24 × 60 m (1,440 m²) with 5 t gantry", frontage:100, crew:"40–100 people", suits:"Drilling and completions, rig components, casing and tubular laydown, heavy plant",
+       loadKwh:800, peakKw:180, solarKw:200, battKwh:450, sofcKw:60, cngKva:125, water:"50 mm metered potable + non-potable + fire ring main", gas:"Metered natural gas, 5 kPa, high-flow" }
+};
+const LOTS = [
+  { id:"SP-01", tier:"S", status:"available" }, { id:"SP-02", tier:"S", status:"available" },
+  { id:"SP-03", tier:"S", status:"offer" },     { id:"SP-04", tier:"S", status:"available" },
+  { id:"SP-05", tier:"M", status:"available" }, { id:"SP-06", tier:"M", status:"available" },
+  { id:"SP-07", tier:"M", status:"leased" },    { id:"SP-08", tier:"M", status:"available" },
+  { id:"SP-09", tier:"M", status:"offer" },
+  { id:"SP-10", tier:"L", status:"available" }, { id:"SP-11", tier:"L", status:"available" },
+  { id:"SP-12", tier:"L", status:"future" }
+];
+const STATUS = { available:["Available","available"], offer:["Under offer","offer"], leased:["Leased","leased"], future:["Stage 2","future"] };
+const INCL = t => [
+  `${t.lot.toLocaleString()} m² fenced and gated lot, compacted gravel hardstand`,
+  `Workshop ${t.shop}, roller doors, LED lighting, 3-phase distribution`,
+  `Office and crib room module with ablutions`,
+  `${t.water}`,
+  `${t.gas}`,
+  `Sealed frontage on the freight road, ${t.frontage} m wide`,
+  `Self-contained power system (below), metered, maintained by the precinct`,
+  `Waste, sewer and stormwater connection to precinct services`
+];
+
+const fmt = n => n.toLocaleString();
+let tierFilter = "all", availOnly = false, selected = null, gen = "cng";
+
+function renderTable(){
+  const body = document.getElementById("lotBody");
+  const rows = LOTS.filter(l => (tierFilter==="all"||l.tier===tierFilter) && (!availOnly||l.status==="available"));
+  body.innerHTML = rows.map(l => {
+    const t = TIERS[l.tier], s = STATUS[l.status];
+    return `<tr data-id="${l.id}" aria-selected="${selected===l.id}" tabindex="0">
+      <td class="num">${l.id}</td><td><span class="tier-badge">${l.tier}</span></td>
+      <td class="num">${fmt(t.lot)} m²</td><td>${t.shop.split(" (")[0]}</td><td class="num">${t.frontage} m</td>
+      <td><span class="status ${s[1]}">${s[0]}</span></td></tr>`;
+  }).join("");
+  document.getElementById("lotCount").textContent = `${rows.length} of ${LOTS.length} lots`;
+  body.querySelectorAll("tr").forEach(tr => {
+    tr.addEventListener("click", () => select(tr.dataset.id));
+    tr.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); select(tr.dataset.id);} });
+  });
+}
+function select(id){
+  selected = id; renderTable(); renderDetail();
+  if (window.matchMedia("(max-width:900px)").matches) document.getElementById("detail").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function renderDetail(){
+  const lot = LOTS.find(l => l.id===selected) || LOTS[0];
+  const t = TIERS[lot.tier], s = STATUS[lot.status];
+  document.getElementById("dTierLabel").textContent = `Tier ${lot.tier} · ${t.name}`;
+  document.getElementById("dTitle").textContent = `Lot ${lot.id}`;
+  const st = document.getElementById("dStatus"); st.textContent = s[0]; st.className = `status ${s[1]}`;
+  document.getElementById("dKv").innerHTML = [
+    ["Lot area", `${fmt(t.lot)} m²`], ["Workshop", t.shop], ["Lease", t.from ? `from $${fmt(t.from)}/month all-in` : "Enquire for rates"], ["Frontage", `${t.frontage} m`], ["Typical crew", t.crew], ["Suits", t.suits]
+  ].map(([k,v]) => `<dt>${k}</dt><dd style="${k==='Suits'||k==='Workshop'?'font-family:inherit;font-size:.9rem':''}">${v}</dd>`).join("");
+  document.getElementById("dIncl").innerHTML = INCL(t).map(x => `<li>${x}</li>`).join("");
+  const genRow = gen==="sofc"
+    ? ["Solid-oxide fuel cell (natural gas)", `${t.sofcKw} kW continuous`]
+    : ["CNG generator set", `${t.cngKva} kVA prime`];
+  document.getElementById("dPower").innerHTML = [
+    ["Design load", `${fmt(t.loadKwh)} kWh/day · ${t.peakKw} kW peak`],
+    ["Solar array", `${t.solarKw} kW on workshop roof`],
+    ["Battery", `${t.battKwh} kWh LFP`],
+    genRow,
+    ["Fuel", gen==="sofc" ? "Piped gas from lot connection" : "Piped gas from lot connection, CNG buffer on site"],
+    ["Black-out protection", gen==="sofc" ? "Battery + fuel cell, no diesel" : "Battery + genset auto-start"]
+  ].map(([k,v]) => `<div class="power-row"><span>${k}</span><span>${v}</span></div>`).join("");
+  // indicative annual energy share
+  const solar = gen==="sofc" ? 0.52 : 0.55, batt = 0.18, g = 1 - solar - batt;
+  document.getElementById("dBar").innerHTML = `<i class="c-solar" style="width:${solar*100}%"></i><i class="c-batt" style="width:${batt*100}%"></i><i class="c-gen" style="width:${g*100}%"></i>`;
+  const enq = document.getElementById("dEnquire");
+  enq.textContent = lot.status==="available" ? `Enquire about lot ${lot.id}` : lot.status==="offer" ? `Join waitlist for ${lot.id}` : `Register interest in ${lot.id}`;
+  enq.onclick = () => { document.getElementById("fTopic").value = "Service lot"; document.getElementById("fMsg").value = `Lot ${lot.id} (Tier ${lot.tier}, ${fmt(t.lot)} m²). `; };
+}
+function renderTiers(){
+  document.getElementById("tierCards").innerHTML = Object.entries(TIERS).map(([k,t]) => `
+    <div class="tier">
+      <span class="tier-badge">${k}</span>
+      <h3>${t.name} package</h3>
+      <dl class="kv">
+        <dt>Lot</dt><dd>${fmt(t.lot)} m²</dd>
+        <dt>Workshop</dt><dd>${t.shop}</dd>
+        <dt>Power</dt><dd>${t.solarKw} kW PV · ${t.battKwh} kWh · ${t.cngKva} kVA CNG genset (${t.sofcKw} kW SOFC option)</dd>
+        <dt>Lease</dt><dd>${t.from ? `from $${fmt(t.from)}/month all-in` : "Enquire for rates"}</dd>
+        <dt>Crew</dt><dd>${t.crew}</dd>
+      </dl>
+      <p style="font-size:.9rem;color:var(--ink-2)">${t.suits}.</p>
+    </div>`).join("");
+}
+document.querySelectorAll(".chip[data-tier]").forEach(b => b.addEventListener("click", () => {
+  tierFilter = b.dataset.tier;
+  document.querySelectorAll(".chip[data-tier]").forEach(x => x.setAttribute("aria-pressed", x===b));
+  renderTable();
+}));
+const availBtn = document.querySelector(".chip[data-avail]");
+availBtn.addEventListener("click", () => { availOnly = !availOnly; availBtn.setAttribute("aria-pressed", availOnly); renderTable(); });
+document.querySelectorAll(".seg button").forEach(b => b.addEventListener("click", () => {
+  gen = b.dataset.gen; document.querySelectorAll(".seg button").forEach(x => x.setAttribute("aria-pressed", x===b)); renderDetail();
+}));
+document.getElementById("enquiry").addEventListener("submit", e => {
+  e.preventDefault();
+  const v = id => document.getElementById(id).value.trim();
+  const subject = encodeURIComponent(`Dunmarra enquiry: ${v("fTopic")}`);
+  const body = encodeURIComponent(`Name: ${v("fName")}\nCompany: ${v("fCompany")}\nEmail: ${v("fEmail")}\nPhone: ${v("fPhone")}\nInterested in: ${v("fTopic")}\n\n${v("fMsg")}`);
+  window.location.href = `mailto:ksheffield@marbellainterests.com?subject=${subject}&body=${body}`;
+});
+selected = "SP-01"; renderTable(); renderDetail(); renderTiers();
+</script>
+
+</body>
+</html>
