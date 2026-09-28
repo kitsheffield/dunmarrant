@@ -211,6 +211,18 @@ textarea{min-height:110px;resize:vertical}
 footer{border-top:1px solid var(--line);padding-block:28px 40px;font-size:.85rem;color:var(--ink-3)}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .hidden{display:none!important}
+/* photos */
+.figure{margin:0}
+.figure img{width:100%;height:auto;display:block;border-radius:6px;border:1px solid var(--line);background:var(--panel)}
+.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:40px}
+.gallery.four{grid-template-columns:repeat(4,1fr)}
+@media (max-width:900px){.gallery,.gallery.four{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.gallery,.gallery.four{grid-template-columns:1fr}}
+.gallery figure{margin:0}
+.gallery img{width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;display:block;border-radius:6px;border:1px solid var(--line);background:var(--panel)}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+@media (max-width:520px){.pair{grid-template-columns:1fr}}
+.pair img{aspect-ratio:16/10}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)} img{max-width:100%} [hidden]{display:none!important}</style>
 </head>
@@ -246,58 +258,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
       <div>
-        <svg class="sitemap" viewBox="0 0 560 420" role="img" aria-labelledby="mapTitle">
-          <title id="mapTitle">Schematic of the Dunmarra precinct: Stuart Highway on the west, township and village clusters to the north, airstrip, and the services precinct with its own highway junction to the south.</title>
-          <rect width="560" height="420" fill="var(--panel)"/>
-          <!-- site wedge -->
-          <path d="M70 30 L540 60 L520 400 L70 390 Z" fill="var(--panel-2)" stroke="var(--line-strong)" stroke-width="1.5"/>
-          <!-- highway -->
-          <path d="M40 0 L52 420" stroke="var(--steel)" stroke-width="6" fill="none"/>
-          <path d="M40 0 L52 420" stroke="var(--ground)" stroke-width="1" stroke-dasharray="8 8" fill="none"/>
-          <text x="20" y="215" font-size="10" fill="var(--ink-2)" transform="rotate(-88 20 215)" font-family="IBM Plex Mono,monospace" letter-spacing="1.5">STUART HIGHWAY</text>
-          <!-- gas pipeline -->
-          <path d="M88 8 L94 412" stroke="var(--sky)" stroke-width="2" stroke-dasharray="4 5" fill="none"/>
-          <text x="98" y="405" font-size="8.5" fill="var(--sky)" font-family="IBM Plex Mono,monospace">GAS PIPELINE</text>
-          <!-- township entry -->
-          <path d="M50 120 L150 122" stroke="var(--steel)" stroke-width="3.5"/>
-          <!-- main avenue -->
-          <path d="M150 122 L360 128" stroke="var(--steel)" stroke-width="3"/>
-          <!-- village loop -->
-          <path d="M150 60 H360 V210 H150 Z" stroke="var(--steel)" stroke-width="2" fill="none"/>
-          <!-- village clusters -->
-          <g fill="var(--ochre)" opacity=".85">
-            <rect x="160" y="70" width="60" height="42" rx="2"/><rect x="230" y="70" width="60" height="42" rx="2"/><rect x="300" y="70" width="52" height="42" rx="2"/>
-            <rect x="160" y="140" width="60" height="42" rx="2"/><rect x="230" y="140" width="60" height="42" rx="2"/><rect x="300" y="140" width="52" height="42" rx="2"/>
-          </g>
-          <text x="255" y="232" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">VILLAGE CLUSTERS</text>
-          <!-- town square / arrival plaza -->
-          <rect x="380" y="90" width="120" height="70" rx="2" fill="var(--spinifex-soft)" stroke="var(--spinifex)" stroke-width="1.2"/>
-          <text x="440" y="120" font-size="9" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace">TOWN CENTRE</text>
-          <text x="440" y="133" font-size="8" fill="var(--ink-3)" text-anchor="middle" font-family="IBM Plex Mono,monospace">shops · hall · oval · pool</text>
-          <!-- airstrip -->
-          <rect x="150" y="256" width="360" height="14" rx="2" fill="var(--steel)"/>
-          <text x="330" y="250" font-size="9" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">AIRSTRIP</text>
-          <!-- services precinct -->
-          <path d="M52 330 L150 332" stroke="var(--steel)" stroke-width="3.5"/>
-          <path d="M150 332 H500" stroke="var(--steel)" stroke-width="2.5"/>
-          <g fill="none" stroke="var(--ink-3)" stroke-width="1">
-            <rect x="160" y="300" width="30" height="24"/><rect x="196" y="300" width="30" height="24"/><rect x="232" y="300" width="30" height="24"/>
-            <rect x="272" y="296" width="44" height="28"/><rect x="322" y="296" width="44" height="28"/>
-            <rect x="378" y="290" width="60" height="34"/><rect x="444" y="290" width="56" height="34"/>
-            <rect x="160" y="342" width="30" height="24"/><rect x="196" y="342" width="30" height="24"/>
-            <rect x="272" y="342" width="44" height="28"/><rect x="322" y="342" width="44" height="28"/>
-            <rect x="378" y="342" width="60" height="34"/>
-          </g>
-          <text x="330" y="392" font-size="9.5" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace" letter-spacing="1">SERVICES PRECINCT · FREIGHT JUNCTION</text>
-          <!-- north arrow -->
-          <path d="M520 30 L526 12 L532 30 Z" fill="var(--ink-2)"/><text x="526" y="42" font-size="8" fill="var(--ink-2)" text-anchor="middle" font-family="IBM Plex Mono,monospace">N</text>
-        </svg>
-        <p class="fig-cap">Schematic structure plan. Not to scale. Guest and freight traffic use separate highway junctions.</p>
+        <figure class="figure">
+          <img src="img/hero-aerial.jpg" width="1600" height="897" alt="Aerial view of a Dunmarra village cluster: rows of modular cabins under shade, a central mess and lounge deck, and a perimeter road with roundabouts." fetchpriority="high">
+          <figcaption class="fig-cap">A 120-unit village cluster. Schematic design, subject to design development.</figcaption>
+        </figure>
       </div>
     </div>
     <div class="facts" aria-label="Key facts">
       <div><b>~600 ha</b><small>site area, subject to survey</small></div>
-      <div><b>3,000</b><small>cabin capacity at full build-out</small></div>
+      <div><b>3,000</b><small>units at full build-out, in 1,500 two-suite cabins</small></div>
       <div><b>2</b><small>highway junctions: guests and freight kept separate</small></div>
       <div><b>Gas + air</b><small>pipeline frontage and on-site airstrip</small></div>
     </div>
@@ -328,7 +297,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <a class="path" href="#project">
         <span class="eyebrow">Government &amp; partners</span>
         <h3>Project status and phasing</h3>
-        <p>Staged from 100 to 3,000 cabins. Designed to keep Beetaloo spend and employment in the Territory.</p>
+        <p>Staged from 100 to 3,000 units. Designed to keep Beetaloo spend and employment in the Territory.</p>
         <span class="go">Project overview →</span>
       </a>
     </div>
@@ -340,18 +309,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="sec-head">
       <p class="eyebrow">The precinct</p>
       <h2>Built in clusters. Serviced like a town.</h2>
-      <p class="lede">The village is organised in clusters of 120 modular units, each with its own mess and kitchen, laundry, lounges and courts. Clusters share a town centre with a community hall, supermarket and shops, sports oval, pool and water tower. The services precinct sits south, on its own freight road.</p>
+      <p class="lede">The village is organised in clusters of 120 units, sixty two-suite modular cabins to a cluster, each cluster with its own mess and kitchen, laundry, lounges and courts. Clusters share a town centre with a community hall, supermarket and shops, sports oval, pool and water tower. The services precinct sits south, on its own freight road.</p>
+    </div>
+    <div class="gallery">
+      <figure><img src="img/cluster-plan.jpg" width="1200" height="1001" alt="Plan of one village cluster: six fingers of cabins around a central mess and lounge spine, basketball court, and a perimeter road with corner roundabouts." loading="lazy"><figcaption class="fig-cap">Cluster plan: six cabin rows around the mess, lounges and court.</figcaption></figure>
+      <figure><img src="img/mess-deck.jpg" width="1200" height="675" alt="Shaded timber deck between the mess and kitchen modules with outdoor dining tables." loading="lazy"><figcaption class="fig-cap">Mess and kitchen with a shaded outdoor dining deck.</figcaption></figure>
+      <figure><img src="img/village-walk.jpg" width="1200" height="675" alt="Landscaped walkway between rows of modular cabins with shade trees and seating." loading="lazy"><figcaption class="fig-cap">Landscaped walkways between cabin rows.</figcaption></figure>
     </div>
     <div class="two">
       <div>
         <h3>Cluster program</h3>
         <div class="program" style="margin-top:14px">
-          <div><b>120</b>accommodation units per cluster</div>
+          <div><b>120</b>units per cluster, in 60 two-suite cabins</div>
           <div><b>Mess</b>149 m² dining, commercial kitchen, cool room and freezer</div>
           <div><b>Laundry</b>twin 12 m modules with shaded drying deck</div>
           <div><b>Lounges</b>73 m² recreation with pool table, table tennis, TVs</div>
           <div><b>Courts</b>basketball court and shaded outdoor dining per cluster</div>
-          <div><b>Parking</b>light-vehicle bays at every unit row</div>
+          <div><b>Parking</b>light-vehicle bays at every cabin row</div>
         </div>
         <h3 style="margin-top:32px">Town centre</h3>
         <div class="program" style="margin-top:14px">
@@ -364,42 +338,85 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </div>
       </div>
       <div>
-        <h3>Type A long-term unit</h3>
-        <p style="color:var(--ink-2);margin:8px 0 16px;font-size:.95rem">Steel-framed modular unit, 12 m × 3.2 m, transported complete and set on pad footings. Every unit is designed for cyclone-rated wind loads and NT heat.</p>
-        <svg class="plan" viewBox="0 0 600 220" role="img" aria-label="Floor plan of the Type A unit: bedroom, robe, living space with kitchenette, ensuite, and a 3-metre deck along the long side.">
+        <h3>Two-suite cabin</h3>
+        <p style="color:var(--ink-2);margin:8px 0 16px;font-size:.95rem">Steel-framed modular cabin, 12 m × 3.2 m, transported complete and set on pad footings. Each cabin holds two separately entered suites with their own ensuites, back to back around a shared plant bay. Designed for cyclone-rated wind loads and NT heat.</p>
+        <svg class="plan" viewBox="0 0 600 220" role="img" aria-label="Floor plan of the two-suite cabin: two mirrored suites, each with a king bed, wardrobe, kitchenette, desk and its own ensuite; the ensuites sit back to back in the centre and a shared plant bay is at the east end.">
           <rect x="1" y="1" width="598" height="218" fill="var(--panel)" stroke="var(--line)"/>
-          <rect x="30" y="30" width="540" height="110" fill="var(--panel-2)" stroke="var(--ink)" stroke-width="3"/>
-          <line x1="215" y1="30" x2="215" y2="140" stroke="var(--ink)" stroke-width="3"/>
-          <line x1="440" y1="30" x2="440" y2="140" stroke="var(--ink)" stroke-width="3"/>
-          <line x1="500" y1="30" x2="500" y2="80" stroke="var(--ink)" stroke-width="3"/>
-          <rect x="45" y="45" width="90" height="60" rx="2" fill="none" stroke="var(--ink-3)"/>
-          <rect x="182" y="40" width="22" height="70" fill="none" stroke="var(--ink-3)"/>
-          <rect x="230" y="38" width="200" height="14" fill="none" stroke="var(--ink-3)"/>
-          <rect x="452" y="40" width="42" height="34" fill="none" stroke="var(--ink-3)"/>
-          <circle cx="470" cy="110" r="8" fill="none" stroke="var(--ink-3)"/>
-          <rect x="30" y="142" width="540" height="46" fill="none" stroke="var(--ink-3)" stroke-dasharray="3 3"/>
-          <g font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--ink-2)">
-            <text x="122" y="128" text-anchor="middle">BEDROOM 12 m²</text>
-            <text x="193" y="125" text-anchor="middle" font-size="8">ROBE</text>
-            <text x="328" y="105" text-anchor="middle">LIVING + KITCHENETTE 14 m²</text>
-            <text x="505" y="128" text-anchor="middle">ENSUITE 6 m²</text>
-            <text x="545" y="62" text-anchor="middle" font-size="8">PLANT</text>
-            <text x="300" y="170" text-anchor="middle">DECK 3.0 m × 12.0 m</text>
-            <text x="300" y="206" text-anchor="middle" fill="var(--ink-3)">12 000</text>
-            <text x="16" y="88" text-anchor="middle" fill="var(--ink-3)" transform="rotate(-90 16 88)">3 200</text>
+          <rect x="30.0" y="30.0" width="540.0" height="144.0" fill="var(--panel-2)" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="220.3" y1="30.0" x2="220.3" y2="174.0" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="287.8" y1="30.0" x2="287.8" y2="174.0" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="355.3" y1="30.0" x2="355.3" y2="174.0" stroke="var(--ink)" stroke-width="3"/>
+          <line x1="543.0" y1="30.0" x2="543.0" y2="174.0" stroke="var(--ink)" stroke-width="3"/>
+          <rect x="222.6" y="35.0" width="63.0" height="134.1" fill="var(--sky-soft)"/>
+          <rect x="290.1" y="35.0" width="63.0" height="134.1" fill="var(--sky-soft)"/>
+          <rect x="545.2" y="35.0" width="19.8" height="134.1" fill="var(--line)"/>
+          <rect x="35.0" y="35.0" width="27.0" height="54.0" fill="none" stroke="var(--ink-3)"/>
+          <rect x="35.0" y="89.8" width="27.0" height="81.0" fill="none" stroke="var(--ink-3)"/>
+          <rect x="86.2" y="35.0" width="84.6" height="92.7" rx="2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="65.1" y="35.0" width="20.2" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="172.2" y="35.0" width="20.2" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="86.2" y="157.8" width="83.2" height="11.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="173.1" y="148.8" width="45.0" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="268.5" y="57.0" width="17.1" height="22.5" fill="none" stroke="var(--ink-3)"/>
+          <ellipse cx="275.2" cy="102.0" rx="8.1" ry="10.3" fill="none" stroke="var(--ink-3)"/>
+          <rect x="222.6" y="128.6" width="63.0" height="40.5" fill="none" stroke="var(--ink-3)"/>
+          <line x1="222.6" y1="128.6" x2="285.6" y2="169.0" stroke="var(--ink)" stroke-width="1"/>
+          <line x1="285.6" y1="128.6" x2="222.6" y2="169.0" stroke="var(--ink)" stroke-width="1"/>
+          <line x1="63.8" y1="174.0" x2="100.6" y2="174.0" stroke="var(--panel)" stroke-width="4"/>
+          <path d="M63.8 174.0 A 36.9 36.9 0 0 1 100.6 137.1" fill="none" stroke="var(--ink-3)" stroke-dasharray="2 2"/>
+          <line x1="100.6" y1="174.0" x2="100.6" y2="137.1" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="220.3" y1="36.8" x2="220.3" y2="71.8" stroke="var(--panel-2)" stroke-width="4"/>
+          <rect x="513.8" y="35.0" width="27.0" height="54.0" fill="none" stroke="var(--ink-3)"/>
+          <rect x="513.8" y="89.8" width="27.0" height="81.0" fill="none" stroke="var(--ink-3)"/>
+          <rect x="404.8" y="35.0" width="84.6" height="92.7" rx="2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="490.3" y="35.0" width="20.2" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="383.2" y="35.0" width="20.2" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="406.2" y="157.8" width="83.2" height="11.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="357.6" y="148.8" width="45.0" height="20.2" fill="none" stroke="var(--ink-3)"/>
+          <rect x="290.1" y="57.0" width="17.1" height="22.5" fill="none" stroke="var(--ink-3)"/>
+          <ellipse cx="300.4" cy="102.0" rx="8.1" ry="10.3" fill="none" stroke="var(--ink-3)"/>
+          <rect x="290.1" y="128.6" width="63.0" height="40.5" fill="none" stroke="var(--ink-3)"/>
+          <line x1="290.1" y1="128.6" x2="353.1" y2="169.0" stroke="var(--ink)" stroke-width="1"/>
+          <line x1="353.1" y1="128.6" x2="290.1" y2="169.0" stroke="var(--ink)" stroke-width="1"/>
+          <line x1="475.1" y1="174.0" x2="511.9" y2="174.0" stroke="var(--panel)" stroke-width="4"/>
+          <path d="M511.9 174.0 A 36.9 36.9 0 0 0 475.1 137.1" fill="none" stroke="var(--ink-3)" stroke-dasharray="2 2"/>
+          <line x1="475.1" y1="174.0" x2="475.1" y2="137.1" stroke="var(--ink)" stroke-width="1.5"/>
+          <line x1="355.3" y1="36.8" x2="355.3" y2="71.8" stroke="var(--panel-2)" stroke-width="4"/>
+          <g font-family="IBM Plex Mono,monospace" font-size="9.5" fill="var(--ink-2)">
+          <text x="140.2" y="145.2" font-size="10" fill="var(--ink-2)" text-anchor="middle">SUITE A · 12 m²</text>
+          <text x="435.4" y="145.2" font-size="10" fill="var(--ink-2)" text-anchor="middle">SUITE B · 12 m²</text>
+          <text x="128.6" y="85.3" font-size="8" fill="var(--ink-3)" text-anchor="middle">KING BED</text>
+          <text x="447.1" y="85.3" font-size="8" fill="var(--ink-3)" text-anchor="middle">KING BED</text>
+          <text x="254.1" y="104.2" font-size="8" fill="var(--ink-2)" text-anchor="middle" transform="rotate(-90 254.1 104.2)">ENSUITE</text>
+          <text x="321.6" y="104.2" font-size="8" fill="var(--ink-2)" text-anchor="middle" transform="rotate(-90 321.6 104.2)">ENSUITE</text>
+          <text x="555.1" y="106.5" font-size="7.5" fill="var(--ink-2)" text-anchor="middle" transform="rotate(-90 555.1 106.5)">PLANT</text>
+          <text x="48.5" y="131.2" font-size="7" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 48.5 131.2)">KITCHENETTE</text>
+          <text x="527.2" y="131.2" font-size="7" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 527.2 131.2)">KITCHENETTE</text>
+          <text x="48.5" y="63.8" font-size="7" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 48.5 63.8)">ROBE</text>
+          <text x="527.2" y="63.8" font-size="7" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 527.2 63.8)">ROBE</text>
+          <text x="195.6" y="161.4" font-size="7" fill="var(--ink-3)" text-anchor="middle">DESK</text>
+          <text x="380.1" y="161.4" font-size="7" fill="var(--ink-3)" text-anchor="middle">DESK</text>
+          <text x="82.2" y="192.0" font-size="8" fill="var(--ink-2)" text-anchor="middle">ENTRY A</text>
+          <text x="493.5" y="192.0" font-size="8" fill="var(--ink-2)" text-anchor="middle">ENTRY B</text>
+          <text x="300.0" y="205.5" font-size="10" fill="var(--ink-3)" text-anchor="middle">12 000</text>
+          <text x="16" y="102.0" font-size="10" fill="var(--ink-3)" text-anchor="middle" transform="rotate(-90 16 102.0)">3 200</text>
           </g>
         </svg>
         <div class="spec-list" style="margin-top:14px">
-          <div class="spec"><span>Envelope</span><span>Colorbond Ultra on Enduroframe steel, fully insulated</span></div>
-          <div class="spec"><span>Bedroom</span><span>King bed, built-in robe, split AC, 65" TV</span></div>
-          <div class="spec"><span>Living</span><span>Kitchenette, 2-zone cooktop, microwave, bar fridge</span></div>
-          <div class="spec"><span>Hot water</span><span>Gas instantaneous</span></div>
-          <div class="spec"><span>Power</span><span>Roof solar, battery store, gas fuel cell</span></div>
-          <div class="spec"><span>Deck</span><span>Independent modular deck, optional living module</span></div>
+          <div class="spec"><span>Envelope</span><span>12.0 × 3.2 m, Colorbond Ultra on Enduroframe steel</span></div>
+          <div class="spec"><span>Suites</span><span>2 per cabin, 4.07 × 3.02 m each, own entry door</span></div>
+          <div class="spec"><span>Each suite</span><span>King bed, 1.2 m robe, desk, TV, split AC</span></div>
+          <div class="spec"><span>Ensuite</span><span>1.4 × 3.0 m per suite, 1.4 m shower</span></div>
+          <div class="spec"><span>Kitchenette</span><span>Sink, under-bench fridge, drawers</span></div>
+          <div class="spec"><span>Plant</span><span>Shared bay: gas fuel cell, hot water, battery, AC</span></div>
+        </div>
+        <div class="pair">
+          <figure class="figure"><img src="img/cabin-01.jpg" width="1600" height="900" alt="Modular cabin on pad footings with a covered entry deck, set among trees." loading="lazy"></figure>
+          <figure class="figure"><img src="img/suite-bedroom.jpg" width="1200" height="767" alt="Suite interior: king bed, mirrored wardrobe, split air conditioner and a high window." loading="lazy"></figure>
         </div>
         <div class="notice" style="margin-top:18px">
           <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v5M10 14h.01"/></svg>
-          <span>Unit and precinct designs are schematic, prepared by Rossi Architects for Steeline GRP, and will be refined in design development. Architectural renders will be published with the designers' consent.</span>
+          <span>Cabin and precinct designs are schematic and will be refined in design development. The two-suite layout is a Dunmarra concept on the Steeline 12 m module; dimensions are indicative.</span>
         </div>
       </div>
     </div>
@@ -431,6 +448,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           </table>
         </div>
         <p class="fig-cap" style="margin-top:10px">Stage 1 release. Lot numbers, sizes and availability are indicative and will be confirmed at lease.</p>
+        <figure class="figure" style="margin-top:22px">
+          <img src="img/lots-plan.jpg" width="1010" height="296" alt="Plan of the services precinct: rows of L, M and S lots on both sides of the freight road, each with a workshop and rooftop solar." loading="lazy">
+          <figcaption class="fig-cap">The services precinct, drawn to scale: L lots on the freight road, M and S lots behind. Solar on every workshop roof.</figcaption>
+        </figure>
       </div>
 
       <aside class="detail" id="detail" aria-live="polite">
@@ -473,13 +494,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="sec-head">
       <p class="eyebrow">For operators and contractors</p>
       <h2>Workforce accommodation</h2>
-      <p class="lede">Take a row, a cluster, or a cluster with your own mess. Units are single-occupancy with ensuite and kitchenette, so crews on long rotations get a room, not a donga. Dunmarra is a landlord: catering, cleaning and site services are run by specialist operators you contract directly or through us.</p>
+      <p class="lede">Take a row, a cluster, or a cluster with your own mess. Every unit is a single-occupancy suite with its own entry, ensuite and kitchenette, so crews on long rotations get a room, not a donga. Dunmarra is a landlord: catering, cleaning and site services are run by specialist operators you contract directly or through us.</p>
     </div>
     <div class="acc-grid">
       <div class="acc"><b>Row</b><small>10–20 units</small><p>Short-term crews, shutdown and construction peaks. Shared cluster mess and laundry.</p></div>
       <div class="acc"><b>Half cluster</b><small>60 units</small><p>Standing rotation for a drilling or completions campaign. Dedicated lounge.</p></div>
       <div class="acc"><b>Full cluster</b><small>120 units</small><p>Own mess and kitchen, laundry, lounges and court. Branded, gated if required.</p></div>
       <div class="acc"><b>Construction camp</b><small>flexible</small><p>Early works lodging for pipeline, power and civil contractors while their own facilities are built.</p></div>
+    </div>
+    <div class="gallery four" style="margin-top:28px;margin-bottom:0">
+      <figure><img src="img/mess-interior.jpg" width="1000" height="635" alt="Cluster mess: long timber tables and a servery counter." loading="lazy"><figcaption class="fig-cap">Cluster mess and servery.</figcaption></figure>
+      <figure><img src="img/kitchen.jpg" width="1000" height="636" alt="Commercial stainless-steel kitchen with cool room doors." loading="lazy"><figcaption class="fig-cap">Commercial kitchen, cool room and freezer.</figcaption></figure>
+      <figure><img src="img/lounge-interior.jpg" width="1000" height="563" alt="Recreation lounge with a pool table, table tennis and bar seating." loading="lazy"><figcaption class="fig-cap">Lounges with pool, table tennis and TVs.</figcaption></figure>
+      <figure><img src="img/laundry-interior.jpg" width="1000" height="835" alt="Laundry with rows of stacked washers and dryers." loading="lazy"><figcaption class="fig-cap">Cluster laundry.</figcaption></figure>
     </div>
     <div class="two" style="margin-top:40px">
       <div>
@@ -521,14 +548,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="sec-head">
       <p class="eyebrow">Project</p>
       <h2>Staged to demand</h2>
-      <p class="lede">Dunmarra Development Land Pty Ltd is delivering the precinct in stages that match Beetaloo activity, with each stage a complete, operable village.</p>
+      <p class="lede">Dunmarra Development Land Pty Ltd is delivering the precinct in stages that match Beetaloo activity, with each stage a complete, operable village. Capacities below are units (beds); cabins hold two.</p>
     </div>
     <div class="phases">
       <div class="phase"><small>Stage 1</small><b>100</b><p>First cluster, mess and laundry, services precinct stage 1 lots, town water and power.</p></div>
       <div class="phase"><small>Stage 2</small><b>500</b><p>Four clusters, town centre core: supermarket, hall, clinic, first venues.</p></div>
       <div class="phase"><small>Stage 3</small><b>1,500</b><p>Oval, pool, school and clinic land, airstrip terminal, expanded freight precinct.</p></div>
-      <div class="phase"><small>Stage 4</small><b>3,000</b><p>Full build-out across eight villages with reserved commercial expansion land.</p></div>
+      <div class="phase"><small>Stage 4</small><b>3,000</b><p>Full build-out: 25 village clusters, town centre and services precinct, with land in reserve.</p></div>
     </div>
+    <figure class="figure" style="margin-top:28px">
+      <img src="img/masterplan.jpg" width="1800" height="1432" alt="Dunmarra master plan: village clusters and the town centre beside the Stuart Highway, the 2 km airstrip to the east, and the services precinct and transport hub on the freight road to the south." loading="lazy">
+      <figcaption class="fig-cap">Master plan at full build-out: 25 village clusters (3,000 units), town centre, 2.0 km airstrip, services precinct and transport hub. Indicative and subject to survey, approvals and design development.</figcaption>
+    </figure>
     <div class="two" style="margin-top:40px">
       <div>
         <h3>Site</h3>
