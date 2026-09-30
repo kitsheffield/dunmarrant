@@ -372,7 +372,7 @@ textarea{min-height:120px;resize:vertical}
         <p>Every lot is fenced, has a workshop with rooftop solar, water and gas connections and its own metered power system sized to the tier. Sealed frontage on the freight road, with the rail and gas corridor to the south and the airstrip apron to the east.</p>
         <div class="stats">
           <div><b>109</b><span>lots drawn to scale</span></div>
-          <div><b>0.2–1 ha</b><span>S, M and L lot sizes</span></div>
+          <div><b>2–10 ac</b><span>S, M and L lot sizes</span></div>
           <div><b>12</b><span>lots in the stage 1 release</span></div>
           <div><b>PV + gas</b><span>solar, battery, CNG or SOFC firming</span></div>
         </div>
@@ -476,8 +476,8 @@ textarea{min-height:120px;resize:vertical}
         </div>
         <p class="fig-cap" style="margin-top:10px">Stage 1 release. Lot numbers, sizes and availability are indicative and will be confirmed at lease.</p>
         <figure class="figure" style="margin-top:28px">
-          <img src="img/lots-plan.jpg" width="1010" height="296" alt="Plan of the services precinct: rows of L, M and S lots on both sides of the freight road, each with a workshop and rooftop solar." loading="lazy">
-          <figcaption class="fig-cap">The services precinct, drawn to scale: L lots on the freight road, M and S lots behind. Solar on every workshop roof.</figcaption>
+          <img src="img/lots-plan.jpg" width="1200" height="716" alt="Plan of the services precinct: two rows of 10-acre lots and two rows of 5-acre lots between the village and the freight road, 2-acre lots south of the freight road, each with a workshop and rooftop solar, and the wildlife corridor along the east." loading="lazy">
+          <figcaption class="fig-cap">The services precinct, drawn to scale: 10-acre L lots and 5-acre M lots between the village and the freight road, 2-acre S lots south of it, and the wildlife corridor to the east. Solar on every workshop roof.</figcaption>
         </figure>
       </div>
       <aside class="detail" id="detail" aria-live="polite">
@@ -740,11 +740,11 @@ textarea{min-height:120px;resize:vertical}
 <script>
 // ---- Lot package data (edit here; republish to update the site) ----
 const TIERS = {
-  S: { name:"Small", lot:2000, shop:"15 × 30 m (450 m²)", frontage:40, crew:"5–15 people", suits:"Electrical, instrumentation, survey, maintenance, tool and parts supply",
+  S: { name:"Small", lot:8100, acres:2, shop:"18 × 36 m (650 m²)", frontage:85, crew:"5–15 people", suits:"Electrical, instrumentation, survey, maintenance, tool and parts supply",
        loadKwh:150, peakKw:35, solarKw:40, battKwh:100, sofcKw:15, cngKva:30, water:"25 mm metered potable + non-potable", gas:"Metered natural gas, 5 kPa" },
-  M: { name:"Medium", lot:5000, shop:"20 × 40 m (800 m²)", frontage:60, crew:"15–40 people", suits:"Civil, logistics, wireline, coil tubing, cementing, light fabrication",
+  M: { name:"Medium", lot:20200, acres:5, shop:"24 × 60 m (1,440 m²)", frontage:140, crew:"15–40 people", suits:"Civil, logistics, wireline, coil tubing, cementing, light fabrication",
        loadKwh:350, peakKw:80, solarKw:90, battKwh:200, sofcKw:30, cngKva:60, water:"40 mm metered potable + non-potable", gas:"Metered natural gas, 5 kPa" },
-  L: { name:"Large", lot:10000, shop:"24 × 60 m (1,440 m²) with 5 t gantry", frontage:100, crew:"40–100 people", suits:"Drilling and completions, rig components, casing and tubular laydown, heavy plant",
+  L: { name:"Large", lot:40500, acres:10, shop:"30 × 80 m (2,400 m²) with 5 t gantry", frontage:210, crew:"40–100 people", suits:"Drilling and completions, rig components, casing and tubular laydown, heavy plant",
        loadKwh:800, peakKw:180, solarKw:200, battKwh:450, sofcKw:60, cngKva:125, water:"50 mm metered potable + non-potable + fire ring main", gas:"Metered natural gas, 5 kPa, high-flow" }
 };
 const LOTS = [
@@ -758,7 +758,7 @@ const LOTS = [
 ];
 const STATUS = { available:["Available","available"], offer:["Under offer","offer"], leased:["Leased","leased"], future:["Stage 2","future"] };
 const INCL = t => [
-  `${t.lot.toLocaleString()} m² fenced and gated lot, compacted gravel hardstand`,
+  `${t.acres} acre (${t.lot.toLocaleString()} m²) fenced and gated lot, compacted gravel hardstand`,
   `Workshop ${t.shop}, roller doors, LED lighting, 3-phase distribution`,
   `Office and crib room module with ablutions`,
   `${t.water}`,
@@ -778,7 +778,7 @@ function renderTable(){
     const t = TIERS[l.tier], s = STATUS[l.status];
     return `<tr data-id="${l.id}" aria-selected="${selected===l.id}" tabindex="0">
       <td class="num">${l.id}</td><td><span class="tier-badge">${l.tier}</span></td>
-      <td class="num">${fmt(t.lot)} m²</td><td>${t.shop.split(" (")[0]}</td><td class="num">${t.frontage} m</td>
+      <td class="num">${t.acres} ac</td><td>${t.shop.split(" (")[0]}</td><td class="num">${t.frontage} m</td>
       <td><span class="status ${s[1]}">${s[0]}</span></td></tr>`;
   }).join("");
   document.getElementById("lotCount").textContent = `${rows.length} of ${LOTS.length} lots`;
@@ -798,7 +798,7 @@ function renderDetail(){
   document.getElementById("dTitle").textContent = `Lot ${lot.id}`;
   const st = document.getElementById("dStatus"); st.textContent = s[0]; st.className = `status ${s[1]}`;
   document.getElementById("dKv").innerHTML = [
-    ["Lot area", `${fmt(t.lot)} m²`], ["Workshop", t.shop], ["Lease", t.from ? `from $${fmt(t.from)}/month all-in` : "Enquire for rates"], ["Frontage", `${t.frontage} m`], ["Typical crew", t.crew], ["Suits", t.suits]
+    ["Lot area", `${t.acres} acres (${fmt(t.lot)} m²)`], ["Workshop", t.shop], ["Lease", t.from ? `from $${fmt(t.from)}/month all-in` : "Enquire for rates"], ["Frontage", `${t.frontage} m`], ["Typical crew", t.crew], ["Suits", t.suits]
   ].map(([k,v]) => `<dt>${k}</dt><dd style="${k==='Suits'||k==='Workshop'?'font-family:inherit;font-size:.9rem':''}">${v}</dd>`).join("");
   document.getElementById("dIncl").innerHTML = INCL(t).map(x => `<li>${x}</li>`).join("");
   const genRow = gen==="sofc"
@@ -825,7 +825,7 @@ function renderTiers(){
       <span class="tier-badge">${k}</span>
       <h3>${t.name} package</h3>
       <dl class="kv">
-        <dt>Lot</dt><dd>${fmt(t.lot)} m²</dd>
+        <dt>Lot</dt><dd>${t.acres} acres (${fmt(t.lot)} m²)</dd>
         <dt>Workshop</dt><dd>${t.shop}</dd>
         <dt>Power</dt><dd>${t.solarKw} kW PV · ${t.battKwh} kWh · ${t.cngKva} kVA CNG genset (${t.sofcKw} kW SOFC option)</dd>
         <dt>Lease</dt><dd>${t.from ? `from $${fmt(t.from)}/month all-in` : "Enquire for rates"}</dd>
